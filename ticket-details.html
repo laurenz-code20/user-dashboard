@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ticket Details</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+<!-- SIDEBAR -->
+<aside class="w-64 bg-[#1e3a8a] text-white flex flex-col">
+
+    <div class="p-6 text-2xl font-bold border-b border-blue-800">
+        MIS Helpdesk
+    </div>
+
+    <nav class="flex-1 p-4 space-y-3">
+        <a href="dashboard.html" class="block hover:bg-blue-700 p-3 rounded-lg">🏠 Dashboard</a>
+        <a href="submit-ticket.html" class="block hover:bg-blue-700 p-3 rounded-lg">➕ Submit Ticket</a>
+        <a href="my-tickets.html" class="block bg-blue-700 p-3 rounded-lg">🎫 My Tickets</a>
+        <a href="notifications.html" class="block hover:bg-blue-700 p-3 rounded-lg">🔔 Notifications</a>
+        <a href="knowledge-base.html" class="block hover:bg-blue-700 p-3 rounded-lg">📚 Knowledge Base</a>
+    </nav>
+
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 p-8">
+
+<h1 class="text-3xl font-bold text-gray-800 mb-6">Ticket #1023</h1>
+
+<div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+<p class="text-gray-600"><strong>Subject:</strong> WiFi not working</p>
+<p class="text-gray-600"><strong>Status:</strong> <span class="text-yellow-500 font-semibold">Open</span></p>
+</div>
+
+<div class="bg-white rounded-2xl shadow-lg p-6">
+
+<div class="space-y-6 mb-6">
+
+<div class="bg-gray-200 p-4 rounded-xl max-w-md">
+<p class="font-semibold text-gray-700">Faculty</p>
+<p class="text-gray-600">Internet is unstable in Faculty Room.</p>
+</div>
+
+<div class="bg-blue-100 p-4 rounded-xl max-w-md ml-auto text-right">
+<p class="font-semibold text-blue-800">MIS Staff</p>
+<p class="text-gray-700">We are checking the router now.</p>
+</div>
+
+</div>
+
+<div class="flex">
+<input type="text" placeholder="Type your message..." class="flex-1 border p-3 rounded-l-xl">
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-r-xl">
+Send
+</button>
+</div>
+
+</div>
+
+</main>
+</body>
+</html>

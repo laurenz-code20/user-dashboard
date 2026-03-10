@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Tickets</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+<!-- SIDEBAR -->
+<aside class="w-64 bg-[#1e3a8a] text-white flex flex-col">
+
+    <div class="p-6 text-2xl font-bold border-b border-blue-800">
+        MIS Helpdesk
+    </div>
+
+    <nav class="flex-1 p-4 space-y-3">
+        <a href="dashboard.html" class="block hover:bg-blue-700 p-3 rounded-lg">🏠 Dashboard</a>
+        <a href="submit-ticket.html" class="block hover:bg-blue-700 p-3 rounded-lg">➕ Submit Ticket</a>
+        <a href="my-tickets.html" class="block bg-blue-700 p-3 rounded-lg">🎫 My Tickets</a>
+        <a href="notifications.html" class="block hover:bg-blue-700 p-3 rounded-lg">🔔 Notifications</a>
+        <a href="knowledge-base.html" class="block hover:bg-blue-700 p-3 rounded-lg">📚 Knowledge Base</a>
+    </nav>
+
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 p-8">
+
+<h1 class="text-3xl font-bold text-gray-800 mb-8">My Tickets</h1>
+
+<div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+
+<table class="min-w-full text-left">
+<thead class="bg-gray-200">
+<tr>
+<th class="p-4">Ticket ID</th>
+<th class="p-4">Subject</th>
+<th class="p-4">Status</th>
+<th class="p-4">Date</th>
+<th class="p-4">Action</th>
+</tr>
+</thead>
+
+<tbody class="divide-y">
+
+<tr class="hover:bg-gray-50">
+<td class="p-4 font-semibold">#1023</td>
+<td class="p-4">WiFi not working</td>
+<td class="p-4 text-yellow-500 font-medium">Open</td>
+<td class="p-4">March 1, 2026</td>
+<td class="p-4">
+<a href="ticket-details.html" class="text-blue-600 font-semibold">View</a>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50">
+<td class="p-4 font-semibold">#1019</td>
+<td class="p-4">Projector Issue</td>
+<td class="p-4 text-green-600 font-medium">Resolved</td>
+<td class="p-4">Feb 27, 2026</td>
+<td class="p-4">
+<a href="ticket-details.html" class="text-blue-600 font-semibold">View</a>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Submit Ticket</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+<!-- SIDEBAR (same as dashboard) -->
+<aside class="w-64 bg-[#1e3a8a] text-white flex flex-col">
+
+    <div class="p-6 text-2xl font-bold border-b border-blue-800">
+        MIS Helpdesk
+    </div>
+
+    <nav class="flex-1 p-4 space-y-3">
+        <a href="dashboard.html" class="block hover:bg-blue-700 p-3 rounded-lg">🏠 Dashboard</a>
+        <a href="submit-ticket.html" class="block bg-blue-700 p-3 rounded-lg">➕ Submit Ticket</a>
+        <a href="my-tickets.html" class="block hover:bg-blue-700 p-3 rounded-lg">🎫 My Tickets</a>
+        <a href="notifications.html" class="block hover:bg-blue-700 p-3 rounded-lg">🔔 Notifications</a>
+        <a href="knowledge-base.html" class="block hover:bg-blue-700 p-3 rounded-lg">📚 Knowledge Base</a>
+    </nav>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="flex-1 p-8">
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">
+        Submit New Ticket
+    </h1>
+
+    <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl">
+
+        <form class="space-y-6">
+
+            <div>
+                <label class="block text-gray-600 mb-2">Category</label>
+                <select class="w-full border p-3 rounded-lg">
+                    <option>Network Issue</option>
+                    <option>Account Problem</option>
+                    <option>Hardware</option>
+                    <option>Software</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-gray-600 mb-2">Priority</label>
+                <select class="w-full border p-3 rounded-lg">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Urgent</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-gray-600 mb-2">Subject</label>
+                <input type="text" class="w-full border p-3 rounded-lg">
+            </div>
+
+            <div>
+                <label class="block text-gray-600 mb-2">Detailed Description</label>
+                <textarea rows="4" class="w-full border p-3 rounded-lg"></textarea>
+            </div>
+
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow-lg">
+                Submit Ticket
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>
