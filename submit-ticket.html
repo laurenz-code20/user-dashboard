@@ -8,7 +8,7 @@
 
 <body class="bg-gray-100 min-h-screen flex">
 
-<!-- SIDEBAR (same as dashboard) -->
+<!-- SIDEBAR (CONSISTENT WITH OTHER PAGES) -->
 <aside class="w-64 bg-[#1e3a8a] text-white flex flex-col">
 
     <div class="p-6 text-2xl font-bold border-b border-blue-800">
@@ -23,58 +23,150 @@
         <a href="knowledge-base.html" class="block hover:bg-blue-700 p-3 rounded-lg">📚 Knowledge Base</a>
     </nav>
 
+    <div class="p-4 border-t border-blue-800">
+        <button class="w-full bg-red-500 hover:bg-red-600 p-2 rounded-lg">
+            Logout
+        </button>
+    </div>
+
 </aside>
 
 <!-- MAIN CONTENT -->
-<main class="flex-1 p-8">
+<main class="flex-1 p-8 flex justify-center">
 
-    <h1 class="text-3xl font-bold text-gray-800 mb-8">
-        Submit New Ticket
-    </h1>
+    <!-- CENTERED FORM CARD ONLY (NOT WHOLE PAGE) -->
+    <div class="w-full max-w-2xl">
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+            Submit New Ticket
+        </h1>
 
-        <form class="space-y-6">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
 
-            <div>
-                <label class="block text-gray-600 mb-2">Category</label>
-                <select class="w-full border p-3 rounded-lg">
-                    <option>Network Issue</option>
-                    <option>Account Problem</option>
-                    <option>Hardware</option>
-                    <option>Software</option>
-                </select>
-            </div>
+            <form class="space-y-5">
 
-            <div>
-                <label class="block text-gray-600 mb-2">Priority</label>
-                <select class="w-full border p-3 rounded-lg">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                    <option>Urgent</option>
-                </select>
-            </div>
+                <div>
+                    <label class="block text-gray-600 mb-2">Category</label>
+                    <select id="category" class="w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-400 outline-none text-gray-400 [&>option]:text-gray-800" onchange="updateCategoryAndSubject(this)">
+                        <option selected disabled hidden>Select category</option>
+                        <option value="network">Network Issue</option>
+                        <option value="account">Account Issue</option>
+                        <option value="hardware">Hardware Issue</option>
+                        <option value="software">Software Issue</option>
+                        <option value="other">Other Concern</option>
+                    </select>
+                    <input id="customCategory" type="text" placeholder="Enter custom category..." class="w-full border p-3 rounded-xl mt-3 hidden placeholder-gray-400" />
+                </div>
 
-            <div>
-                <label class="block text-gray-600 mb-2">Subject</label>
-                <input type="text" class="w-full border p-3 rounded-lg">
-            </div>
+                <div>
+                    <label class="block text-gray-600 mb-2">Subject</label>
+                    <select id="subjectSelect" class="w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-400 outline-none text-gray-400 [&>option]:text-gray-800" onchange="toggleCustomSubject(this)">
+                        <option selected disabled hidden>Select subject</option>
+                    </select>
+                    <input id="customSubject" type="text" placeholder="Describe your concern..." class="w-full border p-3 rounded-xl mt-3 hidden placeholder-gray-400" />
+                </div>
 
-            <div>
-                <label class="block text-gray-600 mb-2">Detailed Description</label>
-                <textarea rows="4" class="w-full border p-3 rounded-lg"></textarea>
-            </div>
+                <div>
+                    <label class="block text-gray-600 mb-2">Priority</label>
+                    <select id="priority" class="w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-400 outline-none text-gray-400 [&>option]:text-gray-800" onchange="updatePriorityStyle(this)">
+                        <option selected disabled hidden class="text-gray-400">Select priority level</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                    <p id="priorityBadge" class="mt-2 text-sm font-medium hidden"></p>
+                </div>
 
-            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow-lg">
-                Submit Ticket
-            </button>
+                
 
-        </form>
+                <div>
+                    <label class="block text-gray-600 mb-2">Detailed Description</label>
+                    <textarea rows="4" placeholder="Describe your issue..."
+                        class="w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"></textarea>
+                </div>
+
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl shadow-lg transition duration-300">
+                    🚀 Submit Ticket
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 
 </main>
 
+<script>
+const subjectOptions = {
+    network: [
+        'No Connection','Slow Internet','Cannot Connect to WiFi','LAN Port Not Working','Others'
+    ],
+    account: [
+        'Account Not Found','Cannot Access Outlook Email','Cannot Access Teams','Invalid School Email Login','Login Problem','Password Reset','Portal Not Accessible','Others'
+    ],
+    hardware: [
+        'Computer Not Working','Printer Not Working','No Display / Monitor Issue','Keyboard/Mouse Not Working','Overheating / Sudden Shutdown','Others'
+    ],
+    software: [
+        'Installation Problem','System Crash','Software Not Responding','Update Failure','Others'
+    ],
+    other: [
+        'General Inquiry','Request for Assistance','Report a Problem','Others'
+    ]
+};
+
+function updateCategoryAndSubject(select) {
+    const customCategory = document.getElementById('customCategory');
+    const subjectSelect = document.getElementById('subjectSelect');
+    const customSubject = document.getElementById('customSubject');
+
+    select.classList.remove('text-gray-400');
+    select.classList.add('text-gray-800');
+
+    customCategory.classList.toggle('hidden', select.value !== 'other');
+
+    subjectSelect.innerHTML = '<option selected disabled hidden>Select subject</option>';
+    subjectOptions[select.value].forEach(item => {
+        subjectSelect.innerHTML += `<option value="${item}">${select.options[select.selectedIndex].text} – ${item}</option>`;
+    });
+    customSubject.classList.add('hidden');
+}
+
+function toggleCustomSubject(select) {
+    const customSubject = document.getElementById('customSubject');
+    select.classList.remove('text-gray-400');
+    select.classList.add('text-gray-800');
+    customSubject.classList.toggle('hidden', select.value !== 'Others');
+}
+
+
+function updatePriorityStyle(select) {
+    const badge = document.getElementById('priorityBadge');
+    select.className = 'w-full border p-3 rounded-xl focus:ring-2 focus:ring-blue-400 outline-none [&>option]:text-gray-800';
+    badge.className = 'mt-2 text-sm font-medium';
+
+    if (select.value === 'low') {
+        select.classList.add('text-blue-600','border-blue-400');
+        badge.classList.add('text-blue-600');
+        badge.textContent = '🔵 Low Priority';
+    } else if (select.value === 'medium') {
+        select.classList.add('text-yellow-500','border-yellow-400');
+        badge.classList.add('text-yellow-500');
+        badge.textContent = '🟡 Medium Priority';
+    } else if (select.value === 'high') {
+        select.classList.add('text-orange-500','border-orange-400');
+        badge.classList.add('text-orange-500');
+        badge.textContent = '🟠 High Priority';
+    } else if (select.value === 'urgent') {
+        select.classList.add('text-red-600','border-red-400');
+        badge.classList.add('text-red-600');
+        badge.textContent = '🔴 Urgent Priority';
+    }
+
+    badge.classList.remove('hidden');
+}
+</script>
 </body>
 </html>
